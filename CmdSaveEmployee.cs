@@ -49,7 +49,7 @@ namespace BackendChallenge.Function
 			string id;
 			string firstName;
 			string lastName;
-			int birthDatInEpoch;
+			int birthDayInEpoch;
 			string email;
 
 			string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
@@ -57,12 +57,12 @@ namespace BackendChallenge.Function
 			id = data?.id ?? null;
 			firstName = data?.FirstName ?? null;
 			lastName = data?.LastName ?? null;
-			birthDatInEpoch = data?.BirthDayInEpoch ?? 0;
+			birthDayInEpoch = data?.BirthdayInEpoch ?? 0;
 			email = data?.Email ?? null;
 
 			if (string.IsNullOrEmpty(id))
 			{
-				record = new EmployeeModel(firstName, lastName, birthDatInEpoch, email);
+				record = new EmployeeModel(firstName, lastName, birthDayInEpoch, email);
 				await outputDocuments.AddAsync(record);
 			}
 
